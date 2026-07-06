@@ -1,0 +1,307 @@
+/* ================================================================
+   BAHAMIAN BUILDERS LLC — Contact Page Styles
+   contact.css — Form layout, info cards, map, success state
+   ================================================================ */
+
+/* ===== CONTACT LAYOUT ===== */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: var(--space-3xl);
+  align-items: start;
+}
+
+/* ===== CONTACT FORM WRAPPER ===== */
+.contact-form-wrapper {
+  background: var(--white);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-3xl);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--gray-200);
+}
+
+.contact-form-header {
+  margin-bottom: var(--space-2xl);
+}
+
+.contact-form-header .section-label {
+  margin-bottom: var(--space-sm);
+}
+
+.contact-form-header h2 {
+  margin-bottom: var(--space-sm);
+}
+
+.contact-form-header p {
+  font-size: var(--text-base);
+  color: var(--gray-500);
+}
+
+/* Required asterisk */
+.required {
+  color: #EF4444;
+  font-weight: 700;
+}
+
+/* Submit button full width */
+.contact-submit {
+  width: 100%;
+  justify-content: center;
+  margin-top: var(--space-md);
+}
+
+/* ===== FORM SUCCESS STATE ===== */
+.form-success {
+  display: none;
+  text-align: center;
+  padding: var(--space-3xl) var(--space-xl);
+  animation: fadeInUp 0.5s ease;
+}
+
+.form-success.visible {
+  display: block;
+}
+
+.form-success-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto var(--space-xl);
+  background: linear-gradient(135deg, var(--teal), var(--green));
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  animation: pulse 2s ease infinite;
+}
+
+.form-success-icon svg {
+  width: 40px;
+  height: 40px;
+}
+
+.form-success h3 {
+  color: var(--navy);
+  margin-bottom: var(--space-md);
+  font-size: var(--text-2xl);
+}
+
+.form-success p {
+  color: var(--gray-500);
+  max-width: 400px;
+  margin: 0 auto var(--space-xl);
+  line-height: 1.8;
+}
+
+/* ===== CONTACT INFO SIDEBAR ===== */
+.contact-info-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.contact-info-card {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  display: flex;
+  gap: var(--space-lg);
+  align-items: flex-start;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--gray-200);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.contact-info-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+  border-color: rgba(14, 165, 181, 0.3);
+}
+
+.contact-info-icon {
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  background: linear-gradient(135deg, var(--teal), var(--ocean));
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  transition: transform var(--transition-spring);
+}
+
+.contact-info-card:hover .contact-info-icon {
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.contact-info-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.contact-info-content h4 {
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--navy);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: var(--space-xs);
+}
+
+.contact-info-content p {
+  font-size: var(--text-sm);
+  color: var(--gray-500);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.contact-info-link {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: var(--space-xs);
+  transition: color var(--transition-base);
+}
+
+.contact-info-link:hover {
+  color: var(--teal);
+}
+
+.contact-info-address {
+  font-size: var(--text-base) !important;
+  color: var(--navy) !important;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+/* Business Hours Grid */
+.hours-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-xs) var(--space-md);
+  margin-top: var(--space-xs);
+}
+
+.hours-day {
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.hours-time {
+  font-size: var(--text-sm);
+  color: var(--gray-500);
+}
+
+.hours-time.closed {
+  color: #EF4444;
+  font-weight: 600;
+}
+
+/* ===== MAP SECTION ===== */
+.map-section {
+  background: var(--gray-50);
+}
+
+.map-placeholder {
+  width: 100%;
+  height: 380px;
+  background: linear-gradient(135deg, var(--gray-100) 0%, var(--gray-200) 100%);
+  border-radius: var(--radius-2xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--gray-300);
+  overflow: hidden;
+}
+
+.map-placeholder-inner {
+  text-align: center;
+  color: var(--gray-400);
+}
+
+.map-placeholder-inner svg {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto var(--space-md);
+  color: var(--teal);
+  opacity: 0.5;
+}
+
+.map-placeholder-inner h3 {
+  font-size: var(--text-xl);
+  color: var(--gray-500);
+  margin-bottom: var(--space-xs);
+}
+
+.map-placeholder-inner p {
+  font-size: var(--text-sm);
+  color: var(--gray-400);
+}
+
+/* ===== FORM VALIDATION SHAKE ===== */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+  20%, 40%, 60%, 80% { transform: translateX(4px); }
+}
+
+.form-group input.shake,
+.form-group select.shake,
+.form-group textarea.shake {
+  animation: shake 0.5s ease;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .contact-layout {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2xl);
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .contact-form-wrapper {
+    padding: var(--space-2xl);
+  }
+
+  .contact-info-sidebar {
+    order: -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+  }
+
+  .map-placeholder {
+    height: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-form-wrapper {
+    padding: var(--space-xl);
+    border-radius: var(--radius-xl);
+  }
+
+  .contact-info-sidebar {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-info-card {
+    padding: var(--space-lg);
+  }
+
+  .map-placeholder {
+    height: 220px;
+  }
+}
