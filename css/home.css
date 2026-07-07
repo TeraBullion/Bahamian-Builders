@@ -260,4 +260,6 @@
 @media (max-width: 480px) {
   .hero h1 { font-size: var(--text-2xl); }
   .hero-badge { font-size: 10px; padding: 6px 14px; }
+  .stats-grid { grid-template-columns: 1fr; gap: var(--space-lg); }
+  .stat-number { font-size: var(--text-3xl); }
 }

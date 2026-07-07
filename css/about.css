@@ -192,4 +192,11 @@
     height: 50px;
     font-size: var(--text-xs);
   }
+
+  .timeline::before { left: 25px; }
+  .timeline-item { gap: var(--space-md); }
+  .timeline-content h3 { font-size: var(--text-base); }
+  .timeline-content p { font-size: var(--text-xs); }
+
+  .about-values .card h3 { font-size: var(--text-base); }
 }

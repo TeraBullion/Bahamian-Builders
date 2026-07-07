@@ -355,4 +355,5 @@ p {
 @media (max-width: 480px) {
   h1 { font-size: var(--text-2xl); }
   .container { padding: 0 var(--space-md); }
+  .section { padding: var(--space-2xl) 0; }
 }
