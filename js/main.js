@@ -60,6 +60,8 @@ const statNumbers = document.querySelectorAll('.stat-number[data-target]');
 function animateCounter(el) {
   const target = parseInt(el.dataset.target);
   const suffix = el.dataset.suffix || '';
+  // Stats with a suffix (e.g. "100%") shouldn't also get a "+"
+  const plus = suffix ? '' : '+';
   const duration = 2000;
   const startTime = performance.now();
 
@@ -71,12 +73,12 @@ function animateCounter(el) {
     const eased = 1 - Math.pow(1 - progress, 3);
     const current = Math.floor(eased * target);
 
-    el.textContent = current.toLocaleString() + (current >= target ? '+' : '') + suffix;
+    el.textContent = current.toLocaleString() + (current >= target ? plus : '') + suffix;
 
     if (progress < 1) {
       requestAnimationFrame(update);
     } else {
-      el.textContent = target.toLocaleString() + '+' + suffix;
+      el.textContent = target.toLocaleString() + plus + suffix;
     }
   }
 

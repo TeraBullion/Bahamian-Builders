@@ -11,6 +11,14 @@
   align-items: start;
 }
 
+/* Let grid/flex children shrink below their content width so long
+   text (hours, address) wraps instead of blowing out the layout */
+.contact-layout > *,
+.contact-info-card,
+.contact-info-content {
+  min-width: 0;
+}
+
 /* ===== CONTACT FORM WRAPPER ===== */
 .contact-form-wrapper {
   background: var(--white);
@@ -270,6 +278,12 @@
 
   .map-embed {
     height: 280px;
+  }
+}
+
+@media (max-width: 620px) {
+  .contact-info-sidebar {
+    grid-template-columns: 1fr;
   }
 }
 

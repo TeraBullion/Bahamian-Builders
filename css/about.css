@@ -94,10 +94,13 @@
   transform: translateX(-50%);
 }
 
+/* Three-column grid: content sits on one side, the year badge occupies
+   the center column directly on the line, so the line never crosses text */
 .timeline-item {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--space-2xl);
+  display: grid;
+  grid-template-columns: 1fr 80px 1fr;
+  column-gap: var(--space-2xl);
+  align-items: start;
   margin-bottom: var(--space-3xl);
   position: relative;
 }
@@ -106,13 +109,10 @@
   margin-bottom: 0;
 }
 
-.timeline-item:nth-child(odd) {
-  flex-direction: row-reverse;
-  text-align: right;
-}
-
 .timeline-year {
-  flex-shrink: 0;
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: center;
   width: 80px;
   height: 80px;
   border-radius: var(--radius-full);
@@ -130,8 +130,14 @@
 }
 
 .timeline-content {
-  flex: 1;
+  grid-column: 3;
+  grid-row: 1;
   padding-top: var(--space-md);
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+  grid-column: 1;
+  text-align: right;
 }
 
 .timeline-content h3 {
@@ -162,21 +168,28 @@
     max-height: 350px;
   }
 
+  /* Left-rail layout: line runs through the center of the year badges */
   .timeline::before {
-    left: 40px;
+    left: 30px;
+    transform: none;
   }
 
-  .timeline-item,
-  .timeline-item:nth-child(odd) {
-    flex-direction: row;
-    text-align: left;
-    gap: var(--space-lg);
+  .timeline-item {
+    grid-template-columns: 60px 1fr;
+    column-gap: var(--space-lg);
   }
 
   .timeline-year {
+    grid-column: 1;
     width: 60px;
     height: 60px;
     font-size: var(--text-sm);
+  }
+
+  .timeline-content,
+  .timeline-item:nth-child(odd) .timeline-content {
+    grid-column: 2;
+    text-align: left;
   }
 }
 
@@ -194,7 +207,7 @@
   }
 
   .timeline::before { left: 25px; }
-  .timeline-item { gap: var(--space-md); }
+  .timeline-item { grid-template-columns: 50px 1fr; column-gap: var(--space-md); }
   .timeline-content h3 { font-size: var(--text-base); }
   .timeline-content p { font-size: var(--text-xs); }
 

@@ -18,6 +18,9 @@ html {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Reveal animations translate elements sideways before they enter the
+     viewport; clip so they can never cause horizontal page scroll */
+  overflow-x: clip;
 }
 
 body {
