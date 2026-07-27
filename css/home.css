@@ -113,6 +113,13 @@
   font-size: var(--text-xs);
   text-transform: uppercase;
   letter-spacing: 2px;
+  pointer-events: none;
+}
+
+/* Hide the indicator when the viewport is too short for it to clear
+   the hero CTAs — it would otherwise overlap the buttons */
+@media (max-height: 849px) {
+  .hero-scroll { display: none; }
 }
 
 .hero-scroll-line {
