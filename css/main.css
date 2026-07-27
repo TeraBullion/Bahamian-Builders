@@ -333,6 +333,16 @@ p {
   margin-top: 0;
 }
 
+/* Navy-on-navy variant: used when the section above the footer is
+   already navy (CTA sections). The wave overlaps the CTA so its
+   gradient shows behind the footer-navy wave — no white band. */
+.wave-divider-navy {
+  transform: none;
+  margin-top: -60px;
+  pointer-events: none;
+  z-index: 1;
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
   h1 { font-size: var(--text-4xl); }
