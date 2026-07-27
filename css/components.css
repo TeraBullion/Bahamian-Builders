@@ -435,6 +435,17 @@
   transform: scale(1.1);
 }
 
+/* Mirrors a photo that appears twice in the gallery so adjacent
+   cards don't read as identical */
+.project-card.mirror img {
+  transform: scaleX(-1);
+  object-position: 30% center;
+}
+
+.project-card.mirror:hover img {
+  transform: scaleX(-1) scale(1.1);
+}
+
 .project-card-overlay {
   position: absolute;
   inset: 0;
@@ -1158,6 +1169,7 @@
   /* Disable hover transforms on touch devices */
   .card:hover { transform: none; }
   .project-card:hover img { transform: none; }
+  .project-card.mirror:hover img { transform: scaleX(-1); }
 }
 
 @media (max-width: 480px) {

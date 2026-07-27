@@ -50,7 +50,9 @@ const lightboxClose = document.getElementById('lightbox-close');
 function openLightbox(card) {
   const title = card.dataset.title;
   const description = card.dataset.description;
-  const image = card.dataset.image;
+  // Use the card's rendered image: the build rewrites <img src> asset URLs
+  // but not data-image attributes, which 404 in production
+  const image = card.querySelector('img') ? card.querySelector('img').src : card.dataset.image;
   const category = card.querySelector('.project-card-category').textContent;
 
   lightboxImage.src = image;
