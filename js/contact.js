@@ -5,6 +5,8 @@
 
 const contactForm = document.getElementById('contact-form');
 const formSuccess = document.getElementById('form-success');
+const submitButton = document.getElementById('contact-submit');
+const submitError = document.getElementById('submit-error');
 
 // Form fields
 const nameInput = document.getElementById('contact-name');
@@ -58,7 +60,7 @@ if (messageTextarea) {
 
 // ===== FORM SUBMISSION =====
 if (contactForm) {
-  contactForm.addEventListener('submit', (e) => {
+  contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     let isValid = true;
@@ -98,8 +100,29 @@ if (contactForm) {
       clearError(messageTextarea, messageError);
     }
 
-    // If all valid, show success
-    if (isValid) {
+    if (!isValid) return;
+
+    // Submit to the server, which pushes the lead into the CRM
+    if (submitError) submitError.textContent = '';
+    const originalLabel = submitButton.innerHTML;
+    submitButton.disabled = true;
+    submitButton.textContent = 'Sending...';
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: nameInput.value.trim(),
+          email: emailInput.value.trim(),
+          phone: phoneInput.value.trim(),
+          service: serviceSelect.value,
+          message: messageTextarea.value.trim(),
+        }),
+      });
+
+      if (!response.ok) throw new Error(`Request failed (${response.status})`);
+
       // Hide form, show success
       contactForm.style.display = 'none';
       document.querySelector('.contact-form-header').style.display = 'none';
@@ -110,6 +133,14 @@ if (contactForm) {
       if (formWrapper) {
         formWrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
+    } catch (err) {
+      console.error('Contact form submission failed:', err);
+      if (submitError) {
+        submitError.textContent = 'Something went wrong sending your message. Please try again, or call us at (713) 555-0187.';
+      }
+    } finally {
+      submitButton.disabled = false;
+      submitButton.innerHTML = originalLabel;
     }
   });
 }
